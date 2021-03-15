@@ -51,9 +51,7 @@ export class AwsdevhourBackendPipelineStack extends Stack {
       synthAction: SimpleSynthAction.standardNpmSynth({
         sourceArtifact,
         cloudAssemblyArtifact,
-        //This build command is to download pillow library, unzip the downloaded file and tidy up.
-        //If you already have pillow library downloaded under reklayer/, please just run 'npm run build'
-        buildCommand: 'rm ./reklayer/pillow-goes-here.txt && wget https://awsdevhour.s3-accelerate.amazonaws.com/pillow.zip && unzip pillow.zip && mv ./python ./reklayer && rm pillow.zip && npm run build',
+        buildCommand: 'npm run build',
         synthCommand: 'npm run cdk synth'
       })
     });

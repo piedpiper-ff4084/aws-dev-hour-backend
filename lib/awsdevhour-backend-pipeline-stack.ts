@@ -59,10 +59,10 @@ export class AwsdevhourBackendPipelineStack extends Stack {
     //Define application stage
     const devStage = pipeline.addApplicationStage(new AwsdevhourBackendPipelineStage(this, 'dev'));
 
-    // devStage.addActions(new ManualApprovalAction({
-    //   actionName: 'ManualApproval',
-    //   runOrder: devStage.nextSequentialRunOrder(),
-    // }));
+    devStage.addActions(new ManualApprovalAction({
+      actionName: 'ManualApproval',
+      runOrder: devStage.nextSequentialRunOrder(),
+    }));
 
     const prodStage = pipeline.addApplicationStage(new AwsdevhourBackendPipelineStage(this, 'prod'));
 

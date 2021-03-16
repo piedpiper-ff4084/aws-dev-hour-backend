@@ -63,8 +63,5 @@ export class AwsdevhourBackendPipelineStack extends Stack {
       actionName: 'ManualApproval',
       runOrder: devStage.nextSequentialRunOrder(),
     }));
-
-    const prodStage = pipeline.addApplicationStage(new AwsdevhourBackendPipelineStage(this, 'prod'));
-
   }
 }

@@ -34,6 +34,7 @@ dynamodb = boto3.resource('dynamodb')
 
 def handler(event, context):
 
+    print("DEBUG")
     print("Lambda processing event: ", event)
 
     # For each message (photo) get the bucket name and key

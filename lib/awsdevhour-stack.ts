@@ -78,7 +78,6 @@ export class AwsdevhourStack extends cdk.Stack {
     }))
     new cdk.CfnOutput(this, 'bucketURL', { value: webBucket.bucketWebsiteDomainName });
 
-
     //Lookup the zone based on domain name
     const zone = route53.HostedZone.fromLookup(this, 'baseZone', {
       domainName: 'franciscoelpancho1992'

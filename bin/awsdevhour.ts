@@ -5,5 +5,10 @@ import { AwsdevhourStack } from '../lib/awsdevhour-stack';
 import { AwsdevhourBackendPipelineStack } from '../lib/awsdevhour-backend-pipeline-stack';
 
 const app = new cdk.App();
-new AwsdevhourStack(app, 'AwsdevhourStack');
+new AwsdevhourStack(app, 'AwsdevhourStack', {
+    env: {
+        account: '897944787776',
+        region: 'us-west-2'
+    }
+});
 new AwsdevhourBackendPipelineStack(app, 'AwsdevhourBackendPipelineStack');

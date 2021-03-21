@@ -13,7 +13,6 @@ import s3deploy = require('@aws-cdk/aws-s3-deployment');
 import { HttpMethods } from '@aws-cdk/aws-s3';
 import sqs = require('@aws-cdk/aws-sqs');
 import s3n = require('@aws-cdk/aws-s3-notifications');
-import route53 = require('@aws-cdk/aws-route53');
 
 const imageBucketName = "cdk-rekn-imgagebucket"
 const resizedBucketName = imageBucketName + "-resized"
@@ -77,18 +76,6 @@ export class AwsdevhourStack extends cdk.Stack {
       
     }))
     new cdk.CfnOutput(this, 'bucketURL', { value: webBucket.bucketWebsiteDomainName });
-
-    //Lookup the zone based on domain name
-    const zone = route53.HostedZone.fromLookup(this, 'baseZone', {
-      domainName: 'franciscoelpancho1992'
-    });
-
-    //Add the Subdomain to Route53
-    const cName = new route53.CnameRecord(this, 'test.baseZone', {
-      zone: zone,
-      recordName: 'aws-dev-hour-example',
-      domainName: webBucket.bucketWebsiteDomainName
-    });
     
     // =====================================================================================
     // Deploy site contents to S3 Bucket
